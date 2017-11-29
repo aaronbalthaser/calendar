@@ -16,6 +16,6 @@ export class LoginComponent {
   constructor(private router: Router) {}
 
   public go() {
-    this.router.navigate(['test1']);
+    
   }
 }
