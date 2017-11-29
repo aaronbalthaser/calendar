@@ -8,17 +8,18 @@ import { RouterModule, Routes } from '@angular/router';
 
 /* Components */
 import { LoginComponent } from './containers/login/login.component';
-
+import { RegisterComponent } from './containers/register/register.component';
 
 /* Services */
 
 /* Routes */
 export const ROUTES: Routes = [
   {
-    path: '',
+    path: 'auth',
     children: [
-      { path: '', pathMatch: 'full', redirectTo: 'login' },
-      { path: 'login', component: LoginComponent }
+      { path: '', pathMatch: 'full', redirectTo: 'auth/login' },
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent }
     ]
   }
 ];
@@ -29,7 +30,8 @@ export const ROUTES: Routes = [
     RouterModule.forChild(ROUTES),
   ],
   declarations: [
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   providers: [],
   exports: []
