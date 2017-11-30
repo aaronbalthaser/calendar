@@ -7,6 +7,7 @@ import { AuthFormComponent } from './components/auth-form/auth-form.component';
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AuthFormComponent

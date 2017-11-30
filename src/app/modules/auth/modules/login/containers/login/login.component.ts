@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 console.log('`Login` component loaded');
 
@@ -7,11 +8,21 @@ console.log('`Login` component loaded');
   template: `
     <div>
       Login
-      <auth-form></auth-form>
+      <auth-form (submitted)="login($event)">
+        <h1>Login</h1>
+        <a routerLink="/auth/register">Not Registered?</a>
+        <button type="submit">
+          Login
+        </button>
+      </auth-form>
     </div>
   `
 })
 
 export class LoginComponent {
   constructor() {}
+
+  login(event: FormGroup) {
+    console.log(event.value);
+  }
 }
