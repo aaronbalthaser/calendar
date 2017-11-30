@@ -47,14 +47,3 @@ import '../styles/headings.css';
 })
 
 export class AppModule {}
-
-/*
-var config = {
-  apiKey: "AIzaSyBv57zmII-OJCO3OhRSEGCkJZBjICCFF0M",
-  authDomain: "calendara-ad36e.firebaseapp.com",
-  databaseURL: "https://calendara-ad36e.firebaseio.com",
-  projectId: "calendara-ad36e",
-  storageBucket: "calendara-ad36e.appspot.com",
-  messagingSenderId: "559843744582"
-};
-*/
