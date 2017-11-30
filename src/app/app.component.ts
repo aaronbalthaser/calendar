@@ -14,11 +14,6 @@ interface AppState {
   encapsulation: ViewEncapsulation.None,
   template: `
     <main>
-      <div>
-        <input [(ngModel)]="text">
-        <button (click)="editText()">Change Title</button>
-        <a routerLink="/dashboard">Dashboard</a>
-      </div>
       <router-outlet></router-outlet>
     </main>
   `
