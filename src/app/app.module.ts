@@ -9,10 +9,6 @@ import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularcla
 import { ENV_PROVIDERS } from './environment';
 import { AppRoutingModule } from './app.routes';
 
-/* Store & Reducers */
-import { StoreModule } from '@ngrx/store';
-import { testReducer } from './store/reducers/test.reducer';
-
 /* Modules */
 import { AuthModule } from './modules/auth';
 
@@ -20,6 +16,9 @@ import { AuthModule } from './modules/auth';
 import { AppComponent } from './app.component';
 
 /* Services */
+
+/* Store */
+import { Store } from 'store';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
@@ -31,9 +30,6 @@ import '../styles/headings.css';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    StoreModule.forRoot({
-      post: testReducer
-    }),
 
     AuthModule
   ],
@@ -41,7 +37,8 @@ import '../styles/headings.css';
     AppComponent
   ],
   providers: [
-    ENV_PROVIDERS
+    ENV_PROVIDERS,
+    Store
   ],
   bootstrap: [ AppComponent ]
 })

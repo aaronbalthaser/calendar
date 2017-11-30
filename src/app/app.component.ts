@@ -1,33 +1,36 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 
-import { Store } from '@ngrx/store';
-import * as Actions from './store/actions/test.actions';
-
-interface AppState {
-  test: any;
-}
+import { AuthService, User } from './modules/auth/modules/shared/services/auth/auth.service';
+import { Store } from 'store';
 
 @Component({
   selector: 'calendara',
   encapsulation: ViewEncapsulation.None,
   template: `
     <main>
+      <h1>{{ user$ | async | json }}</h1>
       <router-outlet></router-outlet>
     </main>
   `
 })
-export class AppComponent {
-  public text: string;
-  private testStore$: Observable<any>;
+export class AppComponent implements OnInit, OnDestroy {
+  private user$: Observable<User>;
+  private subscription: Subscription;
 
-  constructor(private store: Store<AppState>) {
-    this.testStore$ = this.store.select('test');
-    console.log(this.testStore$);
+  constructor(
+    private authService: AuthService,
+    private store: Store
+  ) {}
+
+  ngOnInit() {
+    this.subscription = this.authService.auth$.subscribe();
+    this.user$ = this.store.select('user');
   }
 
-  public editText() {
-    this.store.dispatch(new Actions.EditText(this.text));
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }
