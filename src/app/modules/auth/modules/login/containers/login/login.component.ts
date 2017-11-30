@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+console.log('`Login` component loaded');
+
 @Component({
   selector: 'login',
   template: `

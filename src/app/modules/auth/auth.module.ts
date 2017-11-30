@@ -8,7 +8,11 @@ export const ROUTES: Routes = [
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'login' },
       { path: 'login', loadChildren: './modules/login/login.module#LoginModule' },
-      { path: 'register', loadChildren: './modules/register/register.module#RegisterModule' }
+      {
+        path: 'register',
+        loadChildren: './modules/register/register.module#RegisterModule',
+        data: { preload: true }
+      }
     ]
   }
 ];

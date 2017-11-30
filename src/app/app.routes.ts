@@ -5,7 +5,7 @@ import { AppPreloader } from './app.preloader';
 import { DataResolver } from './app.resolver';
 
 const ROUTES: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
+  { path: '', pathMatch: 'full', redirectTo: 'auth' },
   { path: 'dashboard', loadChildren: './modules/dashboard#DashboardModule', data: { preload: true }}
 ];
 

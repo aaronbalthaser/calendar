@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+console.log('`Register` component loaded');
+
 @Component({
   selector: 'register',
   template: `
