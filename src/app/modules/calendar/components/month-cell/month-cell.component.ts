@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+import { Data } from '../../models/data.interface';
 
 @Component({
   selector: 'month-cell',
@@ -6,6 +8,10 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['month-cell.component.scss'],
 })
 
-export class MonthCellComponent {
-  @Input() data: {};
+export class MonthCellComponent implements OnInit {
+  @Input() data: Data;
+
+  ngOnInit() {
+
+  }
 }
