@@ -4,8 +4,6 @@ import { Router } from '@angular/router';
 
 import { AuthService } from '../../../shared/services/auth/auth.service';
 
-console.log('`Register` component loaded');
-
 @Component({
   selector: 'register',
   template: `

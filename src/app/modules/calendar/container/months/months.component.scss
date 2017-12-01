@@ -1,0 +1,19 @@
+:host {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 100%;
+}
+
+.calendar {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.calendar .cell {
+  width: 14.28%;
+  border: 1px solid #eee;
+}

@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ViewContainerRef, ComponentFactoryResolver, AfterContentInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthService } from '../../../auth/modules/shared/services/auth/auth.service';
+import { MonthsComponent } from '../../../calendar/container/months/months.component';
 
-console.log('`Dashboard` component loaded asynchronously');
+import { AuthService } from '../../../auth/modules/shared/services/auth/auth.service';
 
 @Component({
   selector: 'dashboard',
@@ -11,19 +11,21 @@ console.log('`Dashboard` component loaded asynchronously');
   template: `
     <div class="wrapper">
       <header (logout)="onLogout()"></header>
-      <div id="dashboard-content">
-
-      </div>
+      <div #entry id="dashboard-content"></div>
       <footer></footer>
     </div>
   `
 })
 
-export class DashboardComponent {
+export class DashboardComponent implements AfterContentInit {
+
+  @ViewChild('entry', { read: ViewContainerRef }) entry: ViewContainerRef;
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+
+    private resolver: ComponentFactoryResolver
   ) {}
 
   async onLogout() {
@@ -31,5 +33,10 @@ export class DashboardComponent {
       await this.authService.logout();
       this.router.navigate(['/auth/login']);
     } catch (error) {}
+  }
+
+  public ngAfterContentInit() {
+    const monthsFactory = this.resolver.resolveComponentFactory(MonthsComponent);
+    const component = this.entry.createComponent(monthsFactory);
   }
 }

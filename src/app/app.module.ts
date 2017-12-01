@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app.routes';
 
 /* Modules */
 import { AuthModule } from './modules/auth';
+import { CalendarModule } from './modules/calendar';
 
 /* Components */
 import { AppComponent } from './app.component';

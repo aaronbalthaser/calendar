@@ -4,8 +4,6 @@ import { Router } from '@angular/router';
 
 import { AuthService } from '../../../shared/services/auth/auth.service';
 
-console.log('`Login` component loaded');
-
 @Component({
   selector: 'login',
   template: `
