@@ -4,7 +4,7 @@ import 'rxjs/add/operator/do';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 
-import { Store } from 'store';
+import { Store } from '../../../../../../store';
 
 export interface User {
   email: string,
@@ -44,5 +44,9 @@ export class AuthService {
 
   public logout() {
     return this.af.auth.signOut();
+  }
+
+  get authState() {
+    return this.af.authState;
   }
 }

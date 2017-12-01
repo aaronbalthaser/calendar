@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
 import { AuthService, User } from './modules/auth/modules/shared/services/auth/auth.service';
-import { Store } from 'store';
+import { Store } from './store';
 
 @Component({
   selector: 'calendara',

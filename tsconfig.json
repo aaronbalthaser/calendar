@@ -17,8 +17,7 @@
     ],
     "baseUrl": "./src",
     "paths": {
-      "@angular/*": ["node_modules/@angular/*"],
-      "store": ["src/store.ts"]
+      "@angular/*": ["node_modules/@angular/*"]
     },
     "typeRoots": [
       "node_modules/@types"

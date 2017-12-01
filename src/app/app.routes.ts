@@ -4,9 +4,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppPreloader } from './app.preloader';
 import { DataResolver } from './app.resolver';
 
+import { AuthGuard } from './modules/auth/modules/shared/services/guards/auth.guard';
+
 const ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'auth' },
-  { path: 'dashboard', loadChildren: './modules/dashboard#DashboardModule', data: { preload: true }}
+  {
+    path: 'dashboard',
+    canActivate: [ AuthGuard ],
+    loadChildren: './modules/dashboard#DashboardModule',
+    data: { preload: true }
+  }
 ];
 
 @NgModule({
