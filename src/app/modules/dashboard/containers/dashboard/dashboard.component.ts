@@ -11,7 +11,7 @@ import { AuthService } from '../../../auth/modules/shared/services/auth/auth.ser
   template: `
     <div class="wrapper">
       <header (logout)="onLogout()"></header>
-      <div #entry id="dashboard-content"></div>
+      <div #entry></div>
       <footer></footer>
     </div>
   `
