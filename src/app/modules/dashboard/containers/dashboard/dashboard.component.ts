@@ -7,14 +7,16 @@ console.log('`Dashboard` component loaded asynchronously');
 
 @Component({
   selector: 'dashboard',
-  templateUrl: './dashboard.component.html',
-  styles: [`
-    :host {
-      display: block;
-      height: 100%;
-      width: 100%;
-    }
-  `]
+  styleUrls: ['./dashboard.component.scss'],
+  template: `
+    <div class="wrapper">
+      <header (logout)="onLogout()"></header>
+      <div id="dashboard-content">
+
+      </div>
+      <footer></footer>
+    </div>
+  `
 })
 
 export class DashboardComponent {

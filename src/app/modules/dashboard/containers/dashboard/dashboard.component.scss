@@ -1,0 +1,19 @@
+:host {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.wrapper {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#dashboard-content {
+  background-color: #efefef;
+  display: flex;
+  flex: 1 1 100%;
+}

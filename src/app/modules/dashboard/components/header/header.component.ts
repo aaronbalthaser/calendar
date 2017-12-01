@@ -6,16 +6,15 @@ import { Component, Output, EventEmitter, ChangeDetectionStrategy } from '@angul
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="header">
-      <img [src]="logo">
-      <div>
-        <span (click)="logoutUser()">Logout</span>
-      </div>
+      <img [src]="logoImg">
+      <img (click)="logoutUser()" [src]="logoutImg">
     </div>
   `
 })
 
 export class HeaderComponent {
-  public logo = 'assets/img/logo.svg';
+  public logoImg = 'assets/img/logo.svg';
+  public logoutImg = 'assets/img/logout.svg';
 
   @Output() logout = new EventEmitter<any>();
 

@@ -21,7 +21,6 @@ import { AppComponent } from './app.component';
 import { Store } from './store';
 
 import '../styles/styles.scss';
-import '../styles/headings.css';
 
 @NgModule({
   imports: [
