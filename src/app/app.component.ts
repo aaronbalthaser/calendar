@@ -11,7 +11,6 @@ import { Store } from 'store';
   encapsulation: ViewEncapsulation.None,
   template: `
     <main>
-      <h1>{{ user$ | async | json }}</h1>
       <router-outlet></router-outlet>
     </main>
   `

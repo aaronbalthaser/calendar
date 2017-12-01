@@ -8,6 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './containers/dashboard/dashboard.component';
 
 /* Components */
+import { HeaderComponent } from './components/header/header.component';
 
 /* Services */
 
@@ -24,7 +25,8 @@ export const ROUTES: Routes = [
     RouterModule.forChild(ROUTES)
   ],
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    HeaderComponent
   ],
   providers: [],
   exports: []
