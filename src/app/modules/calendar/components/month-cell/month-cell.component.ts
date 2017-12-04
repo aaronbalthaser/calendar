@@ -11,7 +11,21 @@ import { Data } from '../../models/data.interface';
 export class MonthCellComponent implements OnInit {
   @Input() data: Data;
 
-  ngOnInit() {
+  public active: boolean;
 
+  public getColor() {
+    if (this.active) {
+      return '#000000';
+    } else {
+      return '#979797';
+    }
+  }
+
+  ngOnInit() {
+    if (this.data['classes']) {
+      this.active = this.data['classes']['active'];
+    } else {
+      this.active = false;
+    }
   }
 }
