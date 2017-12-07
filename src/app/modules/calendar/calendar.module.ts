@@ -6,7 +6,8 @@ import { MonthsComponent } from './container/months/months.component';
 import { MonthCellComponent } from './components/month-cell/month-cell.component';
 
 /* Services */
-import { DateService } from './services/date-month.service';
+import { DateService } from './services/date.service';
+import { MonthService } from './services/month.service';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { DateService } from './services/date-month.service';
     MonthCellComponent
   ],
   providers: [
-    DateService
+    DateService,
+    MonthService
   ],
   exports: [
     MonthsComponent,

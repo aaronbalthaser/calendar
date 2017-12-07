@@ -17,6 +17,8 @@ import { CalendarModule } from './modules/calendar';
 import { AppComponent } from './app.component';
 
 /* Services */
+import { TransmitService } from './shared/services/transmit';
+import { UtilsService } from './shared/services/utils';
 
 /* Store */
 import { Store } from './store';
@@ -38,7 +40,10 @@ import '../styles/styles.scss';
   ],
   providers: [
     ENV_PROVIDERS,
-    Store
+
+    Store,
+    TransmitService,
+    UtilsService
   ],
   bootstrap: [ AppComponent ]
 })

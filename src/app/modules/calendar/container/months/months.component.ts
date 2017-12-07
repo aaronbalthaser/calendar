@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { DateService } from '../../services/date-month.service';
+import { DateService } from '../../services/date.service';
+import { MonthService } from '../../services/month.service';
+import { TransmitService } from '../../../../shared/services/transmit';
 
 @Component({
   selector: 'months',
@@ -10,57 +12,89 @@ import { DateService } from '../../services/date-month.service';
 
 export class MonthsComponent implements OnInit {
   public cells = [];
-  public currentMonthDay = {};
+  public month = {};
+  public subscription1: any;
+  public subscription2: any;
+
+  private options = {
+    year: 2017,
+    month: 11
+  };
 
   constructor(
-    private dateService: DateService
-  ) {}
+    private dateService: DateService,
+    private monthService: MonthService,
+    private transmit: TransmitService
+  ) {
 
-  private buildCalendar() {
-    let count = 1;
-    let prev = this.currentMonthDay['prev'];
-    let next = 1;
-
-    for (let i = 0; i < 42; i++) {
-      this.cells.push({ id: i });
-    }
-
-    for (let i = this.currentMonthDay['firstDay'] - 1; i >= 0; i--) {
-      this.cells[i]['date'] = prev;
-      this.cells[i]['classes'] = {
-        active: false
+    this.subscription1 = this.transmit.prev
+      .subscribe(() => {
+        this.prev();
       }
-      prev--;
-    }
+    );
 
-    this.cells.map((cell, index) => {
-      if (index >= this.currentMonthDay['firstDay'] &&
-          count <= this.currentMonthDay['days']) {
-        cell.date = count++;
-        cell.classes = {
-          active: true
-        }
-      } else if (index >= this.currentMonthDay['firstDay']) {
-        cell.date = next;
-        cell.classes = {
-          active: false
-        }
-        next++;
+    this.subscription1 = this.transmit.next
+      .subscribe(() => {
+        this.next();
       }
-    });
+    );
   }
 
-  public ngOnInit() {
-    this.dateService.getCurrent()
+  private getMonthData() {
+    this.dateService.getMonthData(this.options)
       .subscribe(
-        _current => {
-          this.currentMonthDay = _current;
-          this.buildCalendar();
+        _month => {
+          this.month = _month;
+          this.loadCalendar();
         },
         _error => {},
         () => {
           this.dateService.clean();
         }
       );
+  }
+
+  private loadCalendar() {
+    this.monthService.getMonth(this.month)
+      .subscribe(
+        _cells => {
+          this.cells = _cells;
+        }, _error => {},
+        () => {
+          this.monthService.clean();
+        }
+      );
+  }
+
+  public prev() {
+    this.month['month']--;
+
+    if (this.month['month'] === 1) {
+      this.options['month'] = 11;
+      this.options['year'] = this.month['years']['prev'];
+    } else {
+      this.options['month'] = this.month['month'];
+      this.options['year'] = this.month['year'];
+    }
+
+    this.getMonthData();
+  }
+
+  public next() {
+    this.month['month']++;
+
+    if (this.month['month'] === 12) {
+      this.options['month'] = 0;
+      this.options['year'] = this.month['years']['next'];
+    } else {
+      this.options['month'] = this.month['month'];
+      this.options['year'] = this.month['year'];
+    }
+
+    this.getMonthData();
+  }
+
+  public ngOnInit() {
+    this.getMonthData();
   }
 }
