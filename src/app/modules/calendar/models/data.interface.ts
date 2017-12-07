@@ -1,3 +1,5 @@
 export interface Data {
-  id: number
+  id: number,
+  date: number,
+  classes: object
 }

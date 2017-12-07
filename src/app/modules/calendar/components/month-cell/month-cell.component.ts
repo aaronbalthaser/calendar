@@ -22,6 +22,7 @@ export class MonthCellComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.data);
     if (this.data['classes']) {
       this.active = this.data['classes']['active'];
     } else {
